@@ -1,5 +1,5 @@
 <script lang="ts">
-
+    export let location;
 </script>
 
 <div class="mx-12">

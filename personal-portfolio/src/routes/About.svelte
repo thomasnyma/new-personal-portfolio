@@ -1,5 +1,6 @@
 <script lang="ts">
-  import portrait from "../assets/portrait.jpg";
+    import portrait from "../assets/portrait.jpg";
+    export let location;
 
     function redirectToExperience() {
         window.location.href = "/experience";
