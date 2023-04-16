@@ -41,15 +41,15 @@ function selectJob(job: JobInfo, index: number) {
 
 <div class="flex" style="height: {jobInfos.length * 40}px">
   <div class="flex w-1/4 h-full">
-    <div class="relative overflow-hidden">
-      <div style="height: {jobInfos.length * 40}px" class="w-0.5 rounded-full bg-gray-600"></div>
+    <div class="mr-3 relative overflow-hidden">
+      <div style="height: {jobInfos.length * 40}px" class="w-0.5 rounded-full bg-gray-200 dark:bg-gray-600"></div>
       <div id="select-highlight" style="top: {$selectedIndex * 40}px" class="w-0.5 h-10 rounded-full bg-blue-500 absolute"></div>
     </div>
     <ul class="h-full">
       {#each jobInfos as job, index}
-      <li class="{($selectedJob && $selectedJob.id === job.id) ? 'selected' : ''}">
+      <li>
         <button
-          class="p-2 w-full text-left cursor-pointer hover:text-gray-200"
+          class="p-2 w-full text-left cursor-pointer hover:text-blue-500 dark:hover:text-gray-200 {($selectedJob && $selectedJob.id === job.id) ? 'text-blue-500 dark:text-gray-200 opacity-100' : 'dark:opacity-100 opacity-50 dark:text-gray-600'}"
           on:click={() => selectJob(job, index)}
         >
           {job.navText}
@@ -60,11 +60,11 @@ function selectJob(job: JobInfo, index: number) {
   </div>
   <div class="w-3/4 p-4">
     {#if $selectedJob}
-      <h2 class="text-xl font-semibold mb-2">{$selectedJob.title}</h2>
-      <p class="text-gray-600 mb-4">
-        {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format($selectedJob.startDate)} - {($selectedJob.endDate) ? new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format($selectedJob.endDate) : 'Present'} | {$selectedJob.place}
+      <h2 class="text-left font-semibold text-xl text-blue-700 dark:text-gray-400 mb-2"><strong class="text-2xl text-blue-500 dark:text-gray-200">{$selectedJob.title}</strong> <span class="opacity-70 dark:opacity-100">@ {$selectedJob.place}</span></h2>
+      <p class="text-left opacity-50 dark:opacity-100 dark:text-gray-600 mb-4">
+        {new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format($selectedJob.startDate)} - {($selectedJob.endDate) ? new Intl.DateTimeFormat('en-US', { year: 'numeric', month: 'short' }).format($selectedJob.endDate) : 'Present'}
       </p>
-      <p>{$selectedJob.description}</p>
+      <p class="text-left opacity-80 dark:opacity-100">{$selectedJob.description}</p>
     {/if}
   </div>
 </div>
