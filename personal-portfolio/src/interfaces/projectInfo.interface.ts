@@ -5,5 +5,5 @@ export interface ProjectInfo {
 	navText: string;
 	image: string;
 	features?: string[];
-	description: string;
+	description: string[];
 }

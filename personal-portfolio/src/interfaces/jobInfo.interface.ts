@@ -5,5 +5,5 @@ export interface JobInfo {
 	navText: string;
 	startDate: Date;
 	endDate?: Date;
-	description: string;
+	description: string[];
 }
